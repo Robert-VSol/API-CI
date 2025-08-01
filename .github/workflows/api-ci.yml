@@ -26,3 +26,21 @@ jobs:
       - name: run unit tests
         run: npm run test
 
+  linter:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ./api/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+      - name: run linter
+        run: npm run lint
