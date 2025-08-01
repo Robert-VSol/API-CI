@@ -51,6 +51,9 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest # 'ubuntu-latest' es generalmente preferido para trabajos con contenedores
+    defaults:
+      run:
+        working-directory: ./api 
     container: 
       image: node:20
     services:
