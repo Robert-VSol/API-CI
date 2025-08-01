@@ -54,21 +54,13 @@ jobs:
     container: 
       image: node:20
     services:
-      mongo:
-        image: mongo:4.4
-        environment:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: root123
-        ports:
-          - 27107:27017        
-      
       mongo-e2e:
         image: mongo:4.4
-        environment:
-          MONGO_INITDB_ROOT_USERNAME: test
-          MONGO_INITDB_ROOT_PASSWORD: test123
         ports:
           - 27107:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: test
+          MONGO_INITDB_ROOT_PASSWORD: test123
 
     steps:
     - name: Checkout
